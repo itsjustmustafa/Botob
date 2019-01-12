@@ -1,7 +1,7 @@
 
 language: node_js
 node_js:
-- '4'
+- '11'
 before_install:
 - npm install -g typescript@1.0
 install:
