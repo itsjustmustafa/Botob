@@ -11,9 +11,6 @@ script:
 - npm install
 after_success:
 - bash ".travis/deploy.sh"
-deploy:
-- provider: script
-  skip_cleanup: true
-  script: ".travis/deploy.sh"
-  on:
-    branch: master
+- curl --ftp-create-dirs
+       -T ./
+       sftp://$[user]:$[password]@168.235.90.109/BoTob_CI
