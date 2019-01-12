@@ -14,6 +14,7 @@ export interface Service {
     sendMessage(msg: Message): void;
     /**
      * A method which will begin the login process for the service
+     * @return A function that begins retrieving user input that is needed for the login process. Null if no input is needed.
      */
     login(): InputStackEntry;
 

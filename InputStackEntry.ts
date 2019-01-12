@@ -8,14 +8,14 @@ export class InputStackEntry {
     }
 
     /**
-     * The function to execute upon receiving user input. 
+     *  The function to execute upon receiving user input. 
      *  Return a function which will next begin receiving user input.
      *  Return null to signify no further processing is required
      * 
      * TODO: Make return type an optional to better demonstrate intent
      */
     listener: (input: string) => InputStackEntry;
-    
+
     /** The CLI's label that should be displayed */
     label: string;
 }

@@ -15,7 +15,10 @@ export class User {
         this.service = service.constructor.toString();
     }
 
-    /** Creates a reply to the user which can be sent */
+    /** 
+     * Creates a reply to the user which can be sent 
+     * @return A message which can be used to reply to this user
+     */
     makeReply(source: User, message: string):Message {
         return new Message(message, this, source);
     }

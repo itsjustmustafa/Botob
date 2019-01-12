@@ -27,6 +27,7 @@ export class ConsoleService implements Service {
     /**
      * Handles user input
      * @param input The input string
+     * @return Return this function, to infinitely loop
      */
     onInput(input: string): InputStackEntry {
         let msg = new Message(
@@ -38,12 +39,12 @@ export class ConsoleService implements Service {
         return new InputStackEntry(
             (input: string) => this.onInput(input),"MessageInput:"
         );
-
     }
 
     /**
      * Handles configuring the username for the session
      * @param username The username
+     * @return Function to begin receiving user input as messages
      */
     setUsername(username: string): InputStackEntry {
         this.username = username;
@@ -53,6 +54,7 @@ export class ConsoleService implements Service {
     };
     /**
      * Emulates a login process by first requiring the user to provide a username
+     * @return Function to begin the login process
      */
     login(): InputStackEntry {
         console.log('\x1b[36m%s\x1b[0m', "\nConsole interface has been loaded");

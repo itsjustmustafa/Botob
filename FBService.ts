@@ -38,6 +38,7 @@ export class FBService implements Service {
     /**
      * Attempts to retrieve a login configuration through saved data, 
      * or then attempts to use the CLI to retrieve login information
+     * @return Null, or a function to retrieve login details if they're not provided.
      */
     getLoginDetails(): InputStackEntry {
         var fs = require('fs');
@@ -72,28 +73,29 @@ export class FBService implements Service {
     }
     
     /**
-     * 
+     * Ask if the given login details should be stored for future usage
+     * @return The input required to request if login details should be saved. Then logs in regardless of input
+     */
+    askToSaveLogin(): InputStackEntry {
+        return new InputStackEntry((input: string) => this.loginProcess(input),"Save login details?");
+    }
+
+    /**
      * @param response The input string from the CLI
+     * @return The result of the login process which is executed regardless of input
      */
     loginProcess(response : string): InputStackEntry {
         if (response === "Y" || response === "Yes" || response === "YES"){
             console.log("\n" + '\x1b[36m%s\x1b[0m' + "Saving details");
         }
-        this.login();
-        return null;
+        return this.login();
     }
-    
-    /**
-     * Ask if the given login details should be stored for future usage
-     */
-    askToSaveLogin(): InputStackEntry {
-        return new InputStackEntry((input: string) => this.loginProcess(input),"Save login details?");
-    }
-    
+
     /**
      * Handles the CLI functionality to set the username required for logging in.
      * /exit can be provided to cancel the process
      * @param username The input string given. May be /exit to signify cancelling.
+     * @return Begin the password retrieval process, null if the login is cancelled, or the result of the login process
      */
     setUsername(username: string): InputStackEntry{
         this.username = username;
@@ -109,13 +111,14 @@ export class FBService implements Service {
             } else {
                 return new InputStackEntry((input: string) => this.setPassword(input),"Facebook Password");
             }
-            return null;
         }
     }
+
     /**
      * Handles the CLI functionality to set the password required for logging in.
      * /exit can be provided to cancel the process
      * @param password The input string given. May be /exit to signify cancelling.
+     * @return The input required to request if login details should be saved. Then logs in regardless of input
      */
     setPassword(password: string): InputStackEntry{
         if (password === "/exit"){
@@ -125,7 +128,6 @@ export class FBService implements Service {
             this.password = password;
             return this.askToSaveLogin();
         } 
-        
         return null;
     }
 

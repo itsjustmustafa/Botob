@@ -11,12 +11,14 @@ export class MessageAndReply {
      * Checks if the given string matches the key 
      * TODO: MAKE REGEX
      * @param toCheck String to check the key against
+     * @return True if the regex matches
      */
     checkReply(toCheck: string): Boolean{
         return this.inputREGEX === toCheck;
     }
     /** 
      * Returns the key that input strings are compared against
+     * @return The key
      */
     getKey(): string {
         return this.inputREGEX;
@@ -25,7 +27,7 @@ export class MessageAndReply {
     getReply(): string {
         return this.output;
     }
-    
+
     inputREGEX: string;
     output: string;
 }
