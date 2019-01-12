@@ -11,3 +11,9 @@ script:
 - npm install
 after_success:
 - bash deploy.sh
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: "deploy.sh"
+  on:
+    branch: master
