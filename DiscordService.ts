@@ -1,16 +1,12 @@
-import {Module} from "./Module";
 import {Service} from "./Service";
 import {Message} from "./Message";
 import {User} from "./User";
-import {Bot} from "./Bot";
+import { InputStackEntry} from './InputStackEntry'
+import { ConsoleInputHandler} from './ConsoleInputHandler';
+
 const Discord = require('discord.js')
 
-
-import { ConsoleInputHandler, InputQueueEntry} from './ConsoleInputHandler';
-
-const readline = require('readline');
-
-/// A service which allows interaction via the command line interface
+/** Provides access to and from discord through the official API */
 export class DiscordService implements Service {
     
     msgs: Message[] = [];
@@ -24,6 +20,7 @@ export class DiscordService implements Service {
         })
     }
 
+    /** Handles messages being received */
     receiveMessage(input: string, channel_id: string, user_id: string): void {
         if (user_id !== this.getUser().id){
             let msg = new Message(
@@ -34,36 +31,25 @@ export class DiscordService implements Service {
             this.msgs.push(msg);
         }
     }   
-    
+
+    /** Gets the bot as a user */
     getUser(): User {
         return new User(this.client.user.id, this);
     }
 
+    /** 
+     * Sends a message to the given chatroom 
+     * TODO: Split functionality to allow user messages
+    */
     sendMessage(msg: Message): void {
         let channel = this.client.channels.get(msg.destination.id)
         channel.send(msg.messageData);
     }
 
-    onInput(input: string): InputQueueEntry {
-        let msg = new Message(
-            input,
-            new User(this.username,this),
-            new User(this.username,this)
-        );
-        this.msgs.push(msg);
-        return new InputQueueEntry(
-            (input: string) => this.onInput(input),"MessageInput:"
-        );
-    }
-
-    setUsername(username: string, caller?: ConsoleInputHandler): InputQueueEntry {
-        this.username = username;
-        return new InputQueueEntry( 
-            (input: string) => this.onInput(input),"MessageInput:"
-        );
-    };
-
-    login(): InputQueueEntry {
+    /**
+     * Handles the login process for discord
+     */
+    login(): InputStackEntry {
         var fs = require('fs');
         if (fs.existsSync("discordToken.txt")) {
             console.log('\x1b[36m%s\x1b[0m', "\nReading token from file");

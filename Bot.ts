@@ -8,11 +8,21 @@ import { ReplyModule } from "./ReplyModule";
 import { FBService } from "./FBService";
 import { ConsoleInputHandler } from './ConsoleInputHandler';
 import { DiscordService } from "./DiscordService";
+
+/**
+ * Composed of modules and services to manage communication both ways
+ */
 export class Bot {
+    
+    /**  Manages the console input */
     input: ConsoleInputHandler = new ConsoleInputHandler();
+    /**The services which are currently running*/
     services: Service[] =[];
+    /** The modules which will receive all messages for processing*/
     modules: Module[] = [];
+    /** The timer for the message retrieval loop */
     messagesTimer;
+    /** The timer for the module tick loop */
     moduleTickTimer;
 
     constructor() {
@@ -29,9 +39,13 @@ export class Bot {
             this.input.push(service.login());
         }
         this.input.outputLabel();
+        
     }
 
-
+    /**
+     * Sends a set of messages to each service
+     * @param msgsToSend The message to send
+     */
     sendMessages(msgsToSend: Message[]) : void {
         for (let msg of msgsToSend){
             for (let service of this.services) {
@@ -42,31 +56,28 @@ export class Bot {
         }
     }
 
-    onSingleMessage(msg: Message, service: Service): void {
-        let msgs: Message[] = [];
-        msgs.push(msg);
-        this.onMessages(msgs,service);
-    }
-
-    onMessages(msgs: Message[], service: Service): void {
-        for (let msg of msgs){
-            for (let item of this.modules) {
-                // Assert: msg.source.service === service.constructor.toString();
-                this.sendMessages(item.onMessage(msg,service));
-            }
-        }
-    }
-    loop(): void {
-        this.messagesTimer = setInterval(()=> {this.checkMessages()}, 500); 
+    /**
+     * Initialises the looping functions of this class
+     */
+    initialise(): void {
+        this.messagesTimer   = setInterval(()=> {this.checkMessages()}, 500); 
         this.moduleTickTimer = setInterval(()=> {this.tickModules()}, 500); 
     }
 
+    /**
+     * Executes the tick function for each module
+     */
     tickModules(): void {
         for (let item of this.modules){
             item.onTick();
         }
     }
 
+    /**
+     * Retrieves all messages from all services, distributes them to each module, 
+     * then posts the module's reply to all services.
+     * TODO: Consider removing responsibilities of this module
+     */
     checkMessages(): void {
         for (let service of this.services){
             let messages: Message[] = service.msgs.slice();

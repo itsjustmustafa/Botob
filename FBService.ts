@@ -1,12 +1,12 @@
-import {Module} from "./Module";
 import {Service} from "./Service";
 import {Message} from "./Message";
 import {User} from "./User";
-import {Bot} from "./Bot";
-import {InputQueueEntry, ConsoleInputHandler } from './ConsoleInputHandler';
-const readline = require('readline');
+import {InputStackEntry} from './InputStackEntry'
+import {ConsoleInputHandler } from './ConsoleInputHandler';
 
-/// A service which allows interaction via the command line interface
+/**
+ * An implementation of the 'facebook-chat-api' as a service.
+ */
 export class FBService implements Service {    
     msgs: Message[] = [];
     fbLogin = require("facebook-chat-api");
@@ -17,11 +17,12 @@ export class FBService implements Service {
     constructor(input: ConsoleInputHandler) {
         
     }
-    getUser(): User {
-        return new User("CONSOLE", this);
-    }
 
-    login(): InputQueueEntry {
+    /**
+     * Begin the login process if details are configured. 
+     * If details are not configured begin the process of configuration
+     */
+    login(): InputStackEntry {
         if ((this.username !== "") && (this.password !== "")) {
             this.fbLogin({email: this.username, password: this.password}, (err, api) => {
                 if(err) return console.error(err);
@@ -33,7 +34,12 @@ export class FBService implements Service {
         }
         return this.getLoginDetails(); 
     };
-    getLoginDetails(): InputQueueEntry {
+
+    /**
+     * Attempts to retrieve a login configuration through saved data, 
+     * or then attempts to use the CLI to retrieve login information
+     */
+    getLoginDetails(): InputStackEntry {
         var fs = require('fs');
         if (this.username && this.password){
             return null;
@@ -54,14 +60,22 @@ export class FBService implements Service {
             + resetColor + " /exit "+ color
             + "to cancel logging in."
             )
-            return new InputQueueEntry((input: string) => this.setUsername(input),"Facebook Username");
+            return new InputStackEntry((input: string) => this.setUsername(input),"Facebook Username");
         }
     }
+
+    /**
+     * Cancels the login process
+     */
     cancelLogin(): void {
         console.log('\x1b[36m%s\x1b[0m', "\nCancelling facebook login")
     }
     
-    loginProcess(response : string): InputQueueEntry {
+    /**
+     * 
+     * @param response The input string from the CLI
+     */
+    loginProcess(response : string): InputStackEntry {
         if (response === "Y" || response === "Yes" || response === "YES"){
             console.log("\n" + '\x1b[36m%s\x1b[0m' + "Saving details");
         }
@@ -69,11 +83,19 @@ export class FBService implements Service {
         return null;
     }
     
-    askToSaveLogin(): InputQueueEntry {
-        return new InputQueueEntry((input: string) => this.loginProcess(input),"Save login details?");
+    /**
+     * Ask if the given login details should be stored for future usage
+     */
+    askToSaveLogin(): InputStackEntry {
+        return new InputStackEntry((input: string) => this.loginProcess(input),"Save login details?");
     }
     
-    setUsername(username: string): InputQueueEntry{
+    /**
+     * Handles the CLI functionality to set the username required for logging in.
+     * /exit can be provided to cancel the process
+     * @param username The input string given. May be /exit to signify cancelling.
+     */
+    setUsername(username: string): InputStackEntry{
         this.username = username;
         if (username === "/exit"){
             this.cancelLogin()
@@ -85,13 +107,17 @@ export class FBService implements Service {
                 this.username = username;
                 return this.askToSaveLogin();
             } else {
-                return new InputQueueEntry((input: string) => this.setPassword(input),"Facebook Password");
+                return new InputStackEntry((input: string) => this.setPassword(input),"Facebook Password");
             }
             return null;
         }
     }
-
-    setPassword(password: string, caller?: ConsoleInputHandler): InputQueueEntry{
+    /**
+     * Handles the CLI functionality to set the password required for logging in.
+     * /exit can be provided to cancel the process
+     * @param password The input string given. May be /exit to signify cancelling.
+     */
+    setPassword(password: string): InputStackEntry{
         if (password === "/exit"){
             this.cancelLogin();
             return null;
@@ -103,19 +129,24 @@ export class FBService implements Service {
         return null;
     }
 
-    onMessage(msg: Message) : void {
-        this.msgs.push(msg);
-    } 
-    
+    /**
+     * Sends a message
+     * @param msg Message to send
+     */
     sendMessage(msg: Message): void {
         this.api.sendMessage(msg.messageData, msg.destination.id);
     }
 
+    /**
+     * Handles messages which are received
+     * @param input The text sent by the user
+     * @param threadID The threadID the message was received from
+     */
     receiveMessage(input: string, threadID: string): void {
         let msg = new Message(
             input,
             new User(threadID,this),
             new User(threadID,this));
-        this.onMessage(msg);
+        this.msgs.push(msg);
     }    
 }

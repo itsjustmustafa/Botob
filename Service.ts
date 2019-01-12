@@ -1,10 +1,22 @@
 import {Message} from "./Message";
-import {User} from "./User";
-import { InputQueueEntry } from "./ConsoleInputHandler";
+import { InputStackEntry } from "./InputStackEntry";
 
 /// A service provides an adapter to chatroom services
+/**
+ * A service provides a consistent way for online chat services 
+ * to be communicated to and handled
+ */
 export interface Service {
+    /**
+     * A method which will Send a message through the service
+     * @param msg The message to send
+     */
     sendMessage(msg: Message): void;
-    login(): InputQueueEntry;
+    /**
+     * A method which will begin the login process for the service
+     */
+    login(): InputStackEntry;
+
+    /** The messages which have been received from other users on the service */
     msgs: Message[];
 }
