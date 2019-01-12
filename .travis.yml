@@ -10,7 +10,7 @@ install:
 script:
 - npm install
 after_success:
-- bash deploy.sh
+- bash ".travis/deploy.sh"
 deploy:
 - provider: script
   skip_cleanup: true
