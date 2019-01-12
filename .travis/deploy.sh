@@ -1,4 +1,4 @@
 #!/bin/bash
 echo "Running"
 set -e
-ssh root@<IP> [-p PORT] -v exit
+ssh root@168.235.90.109 -v exit
