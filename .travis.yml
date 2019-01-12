@@ -10,4 +10,4 @@ install:
 script:
 - npm install
 after_success:
-- deploy.sh
+- ./deploy.sh
