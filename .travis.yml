@@ -5,3 +5,5 @@ before_install:
 - npm install -g typescript@1.0
 install:
 - npm install
+script: 
+- npm install
