@@ -76,7 +76,7 @@ export class Bot {
     /**
      * Retrieves all messages from all services, distributes them to each module, 
      * then posts the module's reply to all services.
-     * TODO: Consider removing responsibilities of this module
+     * @TODO: Consider removing responsibilities of this module
      */
     checkMessages(): void {
         for (let service of this.services){

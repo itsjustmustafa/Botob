@@ -9,13 +9,14 @@ export class InputStackEntry {
 
     /**
      *  The function to execute upon receiving user input. 
-     *  Return a function which will next begin receiving user input.
-     *  Return null to signify no further processing is required
+     *  
+     *     Return a function which will next begin receiving user input.
+     *     Return null to signify no further processing is required
      * 
-     * TODO: Make return type an optional to better demonstrate intent
+     * @TODO: Make return type an optional to better demonstrate intent
      */
     listener: (input: string) => InputStackEntry;
 
-    /** The CLI's label that should be displayed */
+    /** The label which will be displayed on the command line preceeding user input */
     label: string;
 }

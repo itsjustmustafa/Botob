@@ -7,8 +7,8 @@ import {Service} from "./Service";
 export interface Module {
     /**
      * How the module responds to messages that are sent to it
-     * @param msg message received
-     * @param service the service through the message was acquired
+     * @param msg Message received
+     * @param service The service through the message was acquired
      * @return The responses to the input
      */
     onMessage(msg: Message, service: Service): Message[];

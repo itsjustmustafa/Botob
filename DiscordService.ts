@@ -39,7 +39,7 @@ export class DiscordService implements Service {
 
     /** 
      * Sends a message to the given chatroom 
-     * TODO: Split functionality to allow user messages
+     * @TODO: Split functionality to allow user messages
     */
     sendMessage(msg: Message): void {
         let channel = this.client.channels.get(msg.destination.id)
