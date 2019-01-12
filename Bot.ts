@@ -69,10 +69,10 @@ export class Bot {
 
     checkMessages(): void {
         for (let service of this.services){
-            for (let msg of service.getMessages()){
+            let messages: Message[] = service.msgs.slice();
+            service.msgs = [];
+            for (let msg of messages){
                 for (let item of this.modules) {
-                    // Assert: msg.source.service === service.constructor.toString();
-                    
                     this.sendMessages(item.onMessage(msg,service));
                 }
             }

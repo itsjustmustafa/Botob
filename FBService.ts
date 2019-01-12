@@ -107,12 +107,6 @@ export class FBService implements Service {
         this.msgs.push(msg);
     } 
     
-    getMessages() : Message[] {
-        let out: Message[] = this.msgs.slice();
-        this.msgs = [];
-        return out;
-    };
-
     sendMessage(msg: Message): void {
         this.api.sendMessage(msg.messageData, msg.destination.id);
     }

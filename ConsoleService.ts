@@ -38,8 +38,9 @@ export class ConsoleService implements Service {
         let msg = new Message(
             input,
             new User(this.username,this),
-            new User(this.username,this));
-        this.onMessage(msg);
+            new User(this.username,this)
+        );
+        this.msgs.push(msg);
         return new InputQueueEntry(
             (input: string) => this.onInput(input),"MessageInput:"
         );

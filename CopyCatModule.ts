@@ -9,7 +9,7 @@ export class CopyCatModule implements Module {
 
     onMessage(msg: Message, service: Service): Message[] {
         let ret: Message[] = [];
-        ret.push(msg.source.makeReply(service.getUser(), msg.messageData));
+        ret.push(msg.source.makeReply(msg.destination, msg.messageData));
         return ret;
     }
 }

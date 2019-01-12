@@ -15,7 +15,7 @@ export class ReplyModule implements Module {
         let out: Message[] = [];    
         for (let response of this.responses) {
             if (response.checkReply(msg.messageData)){
-                out.push(msg.source.makeReply(service.getUser(), response.getReply()));
+                out.push(msg.source.makeReply(msg.destination, response.getReply()));
             }
         }
         return out;

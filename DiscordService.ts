@@ -31,23 +31,13 @@ export class DiscordService implements Service {
                 this.getUser(),
                 new User(channel_id,this),
             );
-            this.onMessage(msg);
+            this.msgs.push(msg);
         }
     }   
     
     getUser(): User {
-        return new User( this.client.user.id,this);
+        return new User(this.client.user.id, this);
     }
-
-    onMessage(msg: Message) : void {
-        this.msgs.push(msg);
-    } 
-    
-    getMessages() : Message[] {
-        let out: Message[] = this.msgs.slice();
-        this.msgs = [];
-        return out;
-    };
 
     sendMessage(msg: Message): void {
         let channel = this.client.channels.get(msg.destination.id)
@@ -58,12 +48,12 @@ export class DiscordService implements Service {
         let msg = new Message(
             input,
             new User(this.username,this),
-            new User(this.username,this));
-        this.onMessage(msg);
+            new User(this.username,this)
+        );
+        this.msgs.push(msg);
         return new InputQueueEntry(
             (input: string) => this.onInput(input),"MessageInput:"
         );
-
     }
 
     setUsername(username: string, caller?: ConsoleInputHandler): InputQueueEntry {
