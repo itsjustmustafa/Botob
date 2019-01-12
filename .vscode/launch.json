@@ -22,7 +22,7 @@
             "name": "Debug TypeScript in Node.js",
             "preLaunchTask": "typescript",
             "program": "${workspaceFolder}/main.ts",
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/bin",
             "protocol": "inspector",
             "outFiles": [
               "${workspaceFolder}/bin/**/*.js"
