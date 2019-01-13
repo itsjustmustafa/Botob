@@ -5,10 +5,10 @@ ssh-add id_rsa # Add the private key to SSH
 
 echo -e "Host $IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
-sftp root@$IP <<EOF
+sftp root@$IP << !
     cd $DEPLOY_DIR
     put -r bin
-EOF
+!
 
 exit
 
