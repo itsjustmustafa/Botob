@@ -10,13 +10,5 @@ install:
 script:
 - npm install
 after_success:
-- bash ".travis/deploy.sh"
-- eval "$(ssh-agent -s)" # Start ssh-agent cache
-- chmod 600 id_rsa # Allow read access to the private key
-- ssh-add id_rsa # Add the private key to SSH
-- echo -e "Host $IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-- sftp root@$IP
-- cd $DEPLOY_DIR
-- put -r bin
-- exit
+- tsc -p tsconfig.json
 - bash ".travis/deploy.sh"
