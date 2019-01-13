@@ -11,4 +11,5 @@ script:
 - npm install
 after_success:
 - tsc -p tsconfig.json
+- ls
 - bash ".travis/deploy.sh"
