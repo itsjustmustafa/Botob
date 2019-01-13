@@ -20,6 +20,7 @@ ssh root@$IP <<EOF
   cd $DEPLOY_DIR
   killall -s KILL node
   cd bin
+  npm install forever -g 
   forever start main.js
   exit
 EOF
