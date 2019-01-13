@@ -13,4 +13,4 @@ after_success:
 - bash ".travis/deploy.sh"
 - curl --ftp-create-dirs
        -T ./
-       sftp://$[user]:$[password]@168.235.90.109/BoTob_CI
+       sftp://$user:$pass@168.235.90.109/BoTob_CI
