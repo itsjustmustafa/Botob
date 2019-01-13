@@ -17,7 +17,7 @@ echo "Completed!"
 
 ssh root@$IP <<EOF
   cd $DEPLOY_DIR
-  pkill node
+  killall -s KILL node
   cd bin
   node main.js &
   exit

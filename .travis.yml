@@ -13,9 +13,8 @@ before_install:
 
 install:
 - npm install
+- tsc -p tsconfig.json
 script:
 - npm install
 after_success:
-- tsc -p tsconfig.json
-- ls
 - bash ".travis/deploy.sh"
