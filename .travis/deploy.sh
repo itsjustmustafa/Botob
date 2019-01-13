@@ -19,11 +19,8 @@ ssh root@$IP <<EOF
   cd $DEPLOY_DIR
   pkill node
   cd bin
-  screen -dmS bo
-  screen -x bo
-  node main.js
+  node main.js &
   exit
-
 EOF
 
 exit
