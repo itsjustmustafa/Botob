@@ -47,11 +47,11 @@ export class FBService implements Service {
         }
 
         if (fs.existsSync("password.txt")) {
-            let password: string = fs.readFileSync("password.txt", "utf8");
+            this.password = fs.readFileSync("password.txt", "utf8");
         } 
 
         if (fs.existsSync("username.txt")) {
-            let username: string = fs.readFileSync("username.txt", "utf8");
+            this.username = fs.readFileSync("username.txt", "utf8");
         } else {
             let color: string = "\x1b[33m"
             let resetColor: string = "\x1b[0m";

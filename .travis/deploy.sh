@@ -8,4 +8,15 @@ git config --global push.default matching
 git remote add deploy ssh://root@$IP$DEPLOY_DIR
 git push deploy master
 echo "Completed!"
+
+ssh root@$IP <<EOF
+  cd $DEPLOY_DIR
+  pkill node
+  tsc -p tsconfig.json
+  tsc -p tsconfig.json
+  cd bin
+  node main.js
+  exit
+EOF
+
 exit

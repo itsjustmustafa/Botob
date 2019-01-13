@@ -15,6 +15,10 @@ export class DiscordService implements Service {
     client = new Discord.Client()
     
     constructor(handler: ConsoleInputHandler) {
+        var fs = require('fs');
+        if (fs.existsSync("discordToken.txt")) {
+            this.BOT_TOKEN = fs.readFileSync("discordToken.txt", "utf8");
+        } 
         this.client.on('message', msg => {
            this.receiveMessage(msg.cleanContent, msg.channel.id,msg.member.id);
         })
