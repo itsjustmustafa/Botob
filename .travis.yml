@@ -10,7 +10,8 @@ install:
 script:
 - npm install
 after_success:
+- sftp root@$IP
+- cd $DEPLOY_DIR
+- put -r bin
+- exit
 - bash ".travis/deploy.sh"
-- curl --ftp-create-dirs
-       -T ./
-       sftp://$user:$pass@168.235.90.109/BoTob_CI
