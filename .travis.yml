@@ -7,8 +7,8 @@ before_install:
 - npm install -g discord.js
 - npm install -g readline
 - npm install -g facebook-chat-api
+- npm install ts-node@3.2.0 --save
 - npm install -g typescript
-- npm install node_modules/@types
 install:
 - npm install
 script:
