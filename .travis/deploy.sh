@@ -7,4 +7,5 @@ echo -e "Host $IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 git config --global push.default matching
 git remote add deploy ssh://root@$IP$DEPLOY_DIR
 git push deploy master
+echo "Completed!"
 exit
