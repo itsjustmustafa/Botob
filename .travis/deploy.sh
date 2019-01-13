@@ -13,14 +13,13 @@ sftp root@$IP << !
 git config --global push.default matching
 git remote add deploy ssh://root@$IP$DEPLOY_DIR
 git push deploy master
+
 echo "Completed!"
 
 ssh root@$IP <<EOF
   cd $DEPLOY_DIR
   killall -s KILL node
   cd bin
-  node main.js &
+  forever start main.js
   exit
 EOF
-
-exit
