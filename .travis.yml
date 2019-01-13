@@ -8,7 +8,9 @@ before_install:
 - npm install -g readline
 - npm install -g facebook-chat-api
 - npm install ts-node@3.2.0 --save
+- npm install @types/node
 - npm install -g typescript
+
 install:
 - npm install
 script:
