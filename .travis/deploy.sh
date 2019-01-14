@@ -20,8 +20,13 @@ ssh root@$IP <<EOF
   cd $DEPLOY_DIR
   killall -s KILL apache
   killall -s KILL node
+  rm -r ./bin/documentation
+  mkdir ./bin/documentation
+  npm install typedoc --global
+  typedoc --out ./bin/documentation
   cd bin
   npm install forever -g 
+  
   forever start main.js
   exit
 EOF
