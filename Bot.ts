@@ -8,6 +8,7 @@ import { ReplyModule } from "./ReplyModule";
 import { FBService } from "./FBService";
 import { ConsoleInputHandler } from './ConsoleInputHandler';
 import { DiscordService } from "./DiscordService";
+import { WebsiteService } from './WebsiteService';
 
 /**
  * Composed of modules and services to manage communication both ways
@@ -31,6 +32,7 @@ export class Bot {
 
         this.services.push(new ConsoleService(this.input));
         this.services.push(new DiscordService(this.input));
+        this.services.push(new WebsiteService());
         //this.services.push(new FBService(this.input));
         this.modules.push (new CopyCatModule(/* Give config*/));
         this.modules.push(new ReplyModule());

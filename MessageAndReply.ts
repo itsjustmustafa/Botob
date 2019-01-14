@@ -1,5 +1,6 @@
 /**
- * A key and value pair of strings
+ * Stores a regexp and a string
+ * Intended to be used as follows: If the regexp matches, return the string
  */
 export class MessageAndReply {
 
@@ -9,7 +10,6 @@ export class MessageAndReply {
     }
     /**
      * Checks if the given string matches the key 
-     * @TODO: MAKE REGEX
      * @param toCheck String to check the key against
      * @return True if the regex matches
      */
