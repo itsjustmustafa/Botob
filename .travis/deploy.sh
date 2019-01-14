@@ -18,6 +18,7 @@ echo "Completed!"
 
 ssh root@$IP <<EOF
   cd $DEPLOY_DIR
+  killall -s KILL apache
   killall -s KILL node
   cd bin
   npm install forever -g 
