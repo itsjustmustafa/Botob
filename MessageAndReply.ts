@@ -3,7 +3,7 @@
  */
 export class MessageAndReply {
 
-    constructor(inputRegex: string, output: string){
+    constructor(inputRegex: RegExp, output: string){
         this.inputREGEX = inputRegex;
         this.output = output;
     }
@@ -14,13 +14,13 @@ export class MessageAndReply {
      * @return True if the regex matches
      */
     checkReply(toCheck: string): Boolean{
-        return this.inputREGEX === toCheck;
+        return toCheck.match(this.inputREGEX) !== null;
     }
     /** 
      * Returns the key that input strings are compared against
      * @return The key
      */
-    getKey(): string {
+    getKey(): RegExp {
         return this.inputREGEX;
     }
 
@@ -28,6 +28,6 @@ export class MessageAndReply {
         return this.output;
     }
 
-    inputREGEX: string;
+    inputREGEX: RegExp;
     output: string;
 }
