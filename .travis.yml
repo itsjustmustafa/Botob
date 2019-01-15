@@ -17,6 +17,4 @@ install:
 script:
 - npm install
 after_success:
-- npm install typedoc --global
-- typedoc --out ./ ./bin/
 - bash ".travis/deploy.sh"

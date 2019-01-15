@@ -9,13 +9,17 @@ export class WebsiteService implements Service {
      * @param msg Message received
      */
     sendMessage(msg: Message): void {}  
-    
+
     /**
      * Initialises the webserver, begins listening for webpage requests to send
      */  
     login(): InputStackEntry {
         this.server = http.createServer(function (req, res) {
             var fs = require('fs');
+            let path = __dirname + req.url;
+            if (fs.existsSync(path) === false) {
+                path = __dirname + "documentation/" + req.url;
+            }
             
             fs.readFile(__dirname + req.url, 'utf8', function(err, contents) {
                 res.writeHead(200, {'Content-Type': 'text/html'});
