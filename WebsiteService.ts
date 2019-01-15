@@ -22,11 +22,25 @@ export class WebsiteService implements Service {
             }
             
             fs.readFile(__dirname + req.url, 'utf8', function(err, contents) {
-                res.writeHead(200, {'Content-Type': 'text/html'});
+                
                 
                 if (err) {
+                    res.writeHead(200, {'Content-Type': 'text/html'});
                     res.write("an error occured searching for: " + req.url);
                 } else {
+                    let dotoffset: number = req.url.lastIndexOf('.');
+                    var mimetype = dotoffset == -1
+                                    ? 'text/plain'
+                                    : {
+                                        '.html' : 'text/html',
+                                        '.ico' : 'image/x-icon',
+                                        '.jpg' : 'image/jpeg',
+                                        '.png' : 'image/png',
+                                        '.gif' : 'image/gif',
+                                        '.css' : 'text/css',
+                                        '.js' : 'text/javascript'
+                                        }[ req.url.substr(dotoffset) ];
+                    res.setHeader('Content-type' , mimetype);
                     res.write(contents)
                 }
                 res.end();
