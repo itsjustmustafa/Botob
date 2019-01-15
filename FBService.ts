@@ -23,7 +23,8 @@ export class FBService implements Service {
      * If details are not configured begin the process of configuration
      */
     login(): InputStackEntry {
-        if ((this.username !== "") && (this.password !== "")) {
+        let getDetails = this.getLoginDetails();
+        if (getDetails === null) {
             this.fbLogin({email: this.username, password: this.password}, (err, api) => {
                 if(err) return console.error(err);
                 this.api = api;
@@ -31,8 +32,10 @@ export class FBService implements Service {
                     this.receiveMessage(message.body,message.threadID);
                 });
             });
+            return null;
+        } else {
+            return getDetails; 
         }
-        return this.getLoginDetails(); 
     };
 
     /**
@@ -62,6 +65,9 @@ export class FBService implements Service {
             + "to cancel logging in."
             )
             return new InputStackEntry((input: string) => this.setUsername(input),"Facebook Username");
+        }
+        if (this.username && this.password){
+            return null;
         }
     }
 
