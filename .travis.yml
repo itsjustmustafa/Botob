@@ -10,7 +10,10 @@ before_install:
 - npm install ts-node@3.2.0 --save
 - npm install @types/node
 - npm install -g typescript
-
+- npm install -g typedoc
+- mkdir bin
+- mkdir bin/documentation
+- typedoc --out bin/documentation
 install:
 - npm install
 - tsc -p tsconfig.json
