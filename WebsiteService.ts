@@ -16,12 +16,18 @@ export class WebsiteService implements Service {
     login(): InputStackEntry {
         this.server = http.createServer(function (req, res) {
             var fs = require('fs');
+
             let path = __dirname + req.url;
+            
+            if (req.url === "") {
+                path = __dirname + "/index.html";
+            }
+
             if (fs.existsSync(path) === false) {
                 path = __dirname + "documentation/" + req.url;
             }
             
-            fs.readFile(__dirname + req.url, 'utf8', function(err, contents) {
+            fs.readFile(path, 'utf8', function(err, contents) {
                 
                 
                 if (err) {
