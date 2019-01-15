@@ -8,6 +8,7 @@ echo -e "Host $IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 sftp root@$IP << !
     cd $DEPLOY_DIR
     put -r bin
+    put -r node_modules
 !
 
 git config --global push.default matching
