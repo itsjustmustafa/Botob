@@ -90,8 +90,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_websiteservice_.websiteservice.html#app" class="tsd-kind-icon">app</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_websiteservice_.websiteservice.html#express" class="tsd-kind-icon">express</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_websiteservice_.websiteservice.html#msgs" class="tsd-kind-icon">msgs</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_websiteservice_.websiteservice.html#server" class="tsd-kind-icon">server</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -107,33 +108,43 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="app" class="tsd-anchor"></a>
+					<h3>app</h3>
+					<div class="tsd-signature tsd-kind-icon">app<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;this.express()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/ca634d3/WebsiteService.ts#L33">WebsiteService.ts:33</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="express" class="tsd-anchor"></a>
+					<h3>express</h3>
+					<div class="tsd-signature tsd-kind-icon">express<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&quot;express&quot;)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/ca634d3/WebsiteService.ts#L32">WebsiteService.ts:32</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The webserver</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="msgs" class="tsd-anchor"></a>
 					<h3>msgs</h3>
 					<div class="tsd-signature tsd-kind-icon">msgs<span class="tsd-signature-symbol">:</span> <a href="_message_.message.html" class="tsd-signature-type">Message</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_service_.service.html">Service</a>.<a href="../interfaces/_service_.service.html#msgs">msgs</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/5e1aba7/WebsiteService.ts#L58">WebsiteService.ts:58</a></li>
+							<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/ca634d3/WebsiteService.ts#L30">WebsiteService.ts:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Not needed</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="server" class="tsd-anchor"></a>
-					<h3>server</h3>
-					<div class="tsd-signature tsd-kind-icon">server<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Server</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/5e1aba7/WebsiteService.ts#L60">WebsiteService.ts:60</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The webserver</p>
 						</div>
 					</div>
 				</section>
@@ -151,7 +162,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_service_.service.html">Service</a>.<a href="../interfaces/_service_.service.html#login">login</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/5e1aba7/WebsiteService.ts#L16">WebsiteService.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/ca634d3/WebsiteService.ts#L16">WebsiteService.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -174,7 +185,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_service_.service.html">Service</a>.<a href="../interfaces/_service_.service.html#sendmessage">sendMessage</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/5e1aba7/WebsiteService.ts#L11">WebsiteService.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/ca634d3/WebsiteService.ts#L11">WebsiteService.ts:11</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -258,10 +269,13 @@
 						<a href="_websiteservice_.websiteservice.html" class="tsd-kind-icon">Website<wbr>Service</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_websiteservice_.websiteservice.html#msgs" class="tsd-kind-icon">msgs</a>
+								<a href="_websiteservice_.websiteservice.html#app" class="tsd-kind-icon">app</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_websiteservice_.websiteservice.html#server" class="tsd-kind-icon">server</a>
+								<a href="_websiteservice_.websiteservice.html#express" class="tsd-kind-icon">express</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_websiteservice_.websiteservice.html#msgs" class="tsd-kind-icon">msgs</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_websiteservice_.websiteservice.html#login" class="tsd-kind-icon">login</a>
