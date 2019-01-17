@@ -62,7 +62,7 @@ export class Bot {
      * Initialises the looping functions of this class
      */
     initialise(): void {
-        this.messagesTimer   = setInterval(()=> {this.checkMessages()}, 500); 
+        this.messagesTimer   = setInterval(()=> {this.checkMessages()}, 2000); 
         this.moduleTickTimer = setInterval(()=> {this.tickModules()}, 500); 
     }
 
