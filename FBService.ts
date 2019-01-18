@@ -169,7 +169,7 @@ export class FBService implements Service {
      */
     typingTimeDelay(input: string): number {
         let typingSpeedWPM : number = 60;
-        let words: number = (input.match(/\s/g) || []).length;
+        let words: number = 1 + (input.match(/\s/g) || []).length;
         let MSinMinute: number = 60 * 1000;
         let typingTimeMS: number = (words / typingSpeedWPM) * MSinMinute;
 
@@ -208,7 +208,7 @@ export class FBService implements Service {
      */
     readingTimeDelay(input: string): number {
         let readingSpeedWPM : number = 200;
-        let words: number = (input.match(/\s/g) || []).length;
+        let words: number = 1 + ((input.match(/\s/g) || []).length);
         let MSinMinute: number = 60 * 1000;
         let readingTimeMS: number = (words / readingSpeedWPM) * MSinMinute;
 
