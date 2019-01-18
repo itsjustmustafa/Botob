@@ -11,10 +11,7 @@ export class FBService implements Service {
     fbLogin = require("facebook-chat-api");
     api;
     
-    //username: string = "";
-    //password: string = "";
-    session: any;
-    loginSession: any;
+    session: any = {};
 
     constructor(input: ConsoleInputHandler) {
         
