@@ -9,6 +9,9 @@ import {ConsoleInputHandler } from './ConsoleInputHandler';
 export class FBService implements Service {    
     msgs: Message[] = [];
     fbLogin = require("facebook-chat-api");
+    /** File which holds session information */
+    sessionFilepath = 'session.txt';
+    /** Api handler to the service */
     api;
     
     session: any = {};
@@ -30,7 +33,7 @@ export class FBService implements Service {
 
                 this.api = api;
                 var fs = require('fs');
-                fs.writeFileSync('session.txt', JSON.stringify(api.getAppState()));
+                fs.writeFileSync(this.sessionFilepath, JSON.stringify(api.getAppState()));
 
                 api.listen((err, message) => {
                     this.receiveMessage(message.body,message.threadID);
@@ -50,8 +53,8 @@ export class FBService implements Service {
     getLoginDetails(): InputStackEntry {
         var fs = require('fs');
         this.session.forceLogin = true;
-        if (fs.existsSync("session.txt")){
-            this.session.appstate = JSON.parse(fs.readFileSync('appstate.json', 'utf8'));
+        if (fs.existsSync(this.sessionFilepath)){
+            this.session.appstate = JSON.parse(fs.readFileSync(this.sessionFilepath, 'utf8'));
         }
 
         if (this.session.email && this.session.password){
