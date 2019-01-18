@@ -3,7 +3,6 @@ import {Message} from "./Message";
 import {User} from "./User";
 import {InputStackEntry} from './InputStackEntry'
 import {ConsoleInputHandler } from './ConsoleInputHandler';
-
 /**
  * An implementation of the 'facebook-chat-api' as a service.
  */
@@ -11,8 +10,11 @@ export class FBService implements Service {
     msgs: Message[] = [];
     fbLogin = require("facebook-chat-api");
     api;
-    username: string = "";
-    password: string = "";
+    
+    //username: string = "";
+    //password: string = "";
+    session: any;
+    loginSession: any;
 
     constructor(input: ConsoleInputHandler) {
         
@@ -25,9 +27,14 @@ export class FBService implements Service {
     login(): InputStackEntry {
         let getDetails = this.getLoginDetails();
         if (getDetails === null) {
-            this.fbLogin({email: this.username, password: this.password}, (err, api) => {
-                if(err) return console.error(err);
+            
+            this.fbLogin(this.session, (err, api) => {
+                if(err) return new console.error(err);
+
                 this.api = api;
+                var fs = require('fs');
+                fs.writeFileSync('session.txt', JSON.stringify(api.getAppState()));
+
                 api.listen((err, message) => {
                     this.receiveMessage(message.body,message.threadID);
                 });
@@ -45,16 +52,21 @@ export class FBService implements Service {
      */
     getLoginDetails(): InputStackEntry {
         var fs = require('fs');
-        if (this.username && this.password){
+        this.session.forceLogin = true;
+        if (fs.existsSync("session.txt")){
+            this.session.appstate = JSON.parse(fs.readFileSync('appstate.json', 'utf8'));
+        }
+
+        if (this.session.email && this.session.password){
             return null;
         }
 
         if (fs.existsSync("password.txt")) {
-            this.password = fs.readFileSync("password.txt", "utf8");
+            this.session.password = fs.readFileSync("password.txt", "utf8");
         } 
 
         if (fs.existsSync("username.txt")) {
-            this.username = fs.readFileSync("username.txt", "utf8");
+            this.session.email = fs.readFileSync("username.txt", "utf8");
         } else {
             let color: string = "\x1b[33m"
             let resetColor: string = "\x1b[0m";
@@ -66,7 +78,7 @@ export class FBService implements Service {
             )
             return new InputStackEntry((input: string) => this.setUsername(input),"Facebook Username");
         }
-        if (this.username && this.password){
+        if (this.session.email && this.session.password){
             return null;
         }
     }
@@ -104,15 +116,15 @@ export class FBService implements Service {
      * @return Begin the password retrieval process, null if the login is cancelled, or the result of the login process
      */
     setUsername(username: string): InputStackEntry{
-        this.username = username;
+        this.session.email = username;
         if (username === "/exit"){
             this.cancelLogin()
             return null;
         } else {
-            this.username = username;
+            this.session.email = username;
             
-            if (this.password !== "") {
-                this.username = username;
+            if (this.session.password !== "") {
+                this.session.email = username;
                 return this.askToSaveLogin();
             } else {
                 return new InputStackEntry((input: string) => this.setPassword(input),"Facebook Password");
@@ -130,8 +142,8 @@ export class FBService implements Service {
         if (password === "/exit"){
             this.cancelLogin();
             return null;
-        } else if (this.username !== "") {
-            this.password = password;
+        } else if (this.session.email !== "") {
+            this.session.password = password;
             return this.askToSaveLogin();
         } 
         return null;
@@ -142,8 +154,32 @@ export class FBService implements Service {
      * @param msg Message to send
      */
     sendMessage(msg: Message): void {
-        this.api.sendMessage(msg.messageData, msg.destination.id);
+        setTimeout(() => 
+        {
+            this.api.sendMessage(msg.messageData, msg.destination.id);
+        },
+        this.typingTimeDelay(msg.messageData)); 
     }
+ /**
+     * Computes a reading time given the string
+     * This function has not been combined with 'readingTimeDelay' as although 
+     * the code is identical, they are for different purposes. 
+     * @param input The string to 'type'
+     * @returns The length it would take to type the given input
+     */
+    typingTimeDelay(input: string): number {
+        let typingSpeedWPM : number = 60;
+        let words: number = (input.match(/\s/g) || []).length;
+        let MSinMinute: number = 60 * 1000;
+        let typingTimeMS: number = (words / typingSpeedWPM) * MSinMinute;
+
+        let minDelay : number = 100;
+        let maxDelay : number = 2000;
+        let randomDelay : number = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
+        return randomDelay + typingTimeMS;
+    }  
+    
+
 
     /**
      * Handles messages which are received
@@ -151,10 +187,34 @@ export class FBService implements Service {
      * @param threadID The threadID the message was received from
      */
     receiveMessage(input: string, threadID: string): void {
+        
         let msg = new Message(
             input,
             new User(threadID,this),
             new User(threadID,this));
-        this.msgs.push(msg);
-    }    
+
+        
+        setTimeout(() => 
+        {
+            this.msgs.push(msg);
+        },
+        this.readingTimeDelay(input));
+    }
+
+    /**
+     * Computes a reading time given the string
+     * @param input The input string
+     * @returns The length it would take to read the given input
+     */
+    readingTimeDelay(input: string): number {
+        let readingSpeedWPM : number = 200;
+        let words: number = (input.match(/\s/g) || []).length;
+        let MSinMinute: number = 60 * 1000;
+        let readingTimeMS: number = (words / readingSpeedWPM) * MSinMinute;
+
+        let minDelay : number = 100;
+        let maxDelay : number = 500;
+        let randomDelay : number = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
+        return randomDelay + readingTimeMS;
+    } 
 }
