@@ -105,9 +105,9 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#api" class="tsd-kind-icon">api</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#fblogin" class="tsd-kind-icon">fb<wbr>Login</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#loginsession" class="tsd-kind-icon">login<wbr>Session</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#msgs" class="tsd-kind-icon">msgs</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#password" class="tsd-kind-icon">password</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#username" class="tsd-kind-icon">username</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#session" class="tsd-kind-icon">session</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -118,10 +118,12 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#getlogindetails" class="tsd-kind-icon">get<wbr>Login<wbr>Details</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#login" class="tsd-kind-icon">login</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#loginprocess" class="tsd-kind-icon">login<wbr>Process</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#readingtimedelay" class="tsd-kind-icon">reading<wbr>Time<wbr>Delay</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#receivemessage" class="tsd-kind-icon">receive<wbr>Message</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#sendmessage" class="tsd-kind-icon">send<wbr>Message</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#setpassword" class="tsd-kind-icon">set<wbr>Password</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#setusername" class="tsd-kind-icon">set<wbr>Username</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_fbservice_.fbservice.html#typingtimedelay" class="tsd-kind-icon">typing<wbr>Time<wbr>Delay</a></li>
 							</ul>
 						</section>
 					</div>
@@ -139,7 +141,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/2e0bad1/FBService.ts#L15">FBService.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L17">FBService.ts:17</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -161,7 +163,7 @@
 					<div class="tsd-signature tsd-kind-icon">api<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/2e0bad1/FBService.ts#L13">FBService.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L12">FBService.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -171,7 +173,17 @@
 					<div class="tsd-signature tsd-kind-icon">fb<wbr>Login<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&quot;facebook-chat-api&quot;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/2e0bad1/FBService.ts#L12">FBService.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L11">FBService.ts:11</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="loginsession" class="tsd-anchor"></a>
+					<h3>login<wbr>Session</h3>
+					<div class="tsd-signature tsd-kind-icon">login<wbr>Session<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L17">FBService.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -182,27 +194,17 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_service_.service.html">Service</a>.<a href="../interfaces/_service_.service.html#msgs">msgs</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/2e0bad1/FBService.ts#L11">FBService.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L10">FBService.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="password" class="tsd-anchor"></a>
-					<h3>password</h3>
-					<div class="tsd-signature tsd-kind-icon">password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
+					<a name="session" class="tsd-anchor"></a>
+					<h3>session</h3>
+					<div class="tsd-signature tsd-kind-icon">session<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/2e0bad1/FBService.ts#L15">FBService.ts:15</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="username" class="tsd-anchor"></a>
-					<h3>username</h3>
-					<div class="tsd-signature tsd-kind-icon">username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/2e0bad1/FBService.ts#L14">FBService.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L16">FBService.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -219,7 +221,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/2e0bad1/FBService.ts#L85">FBService.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L97">FBService.ts:97</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -242,7 +244,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/2e0bad1/FBService.ts#L77">FBService.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L89">FBService.ts:89</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -264,7 +266,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/2e0bad1/FBService.ts#L46">FBService.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L53">FBService.ts:53</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -289,7 +291,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_service_.service.html">Service</a>.<a href="../interfaces/_service_.service.html#login">login</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/2e0bad1/FBService.ts#L25">FBService.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L27">FBService.ts:27</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -312,7 +314,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/2e0bad1/FBService.ts#L93">FBService.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L105">FBService.ts:105</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -332,6 +334,38 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="readingtimedelay" class="tsd-anchor"></a>
+					<h3>reading<wbr>Time<wbr>Delay</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">reading<wbr>Time<wbr>Delay<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L209">FBService.ts:209</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Computes a reading time given the string</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>input: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The input string</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<p>The length it would take to read the given input</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="receivemessage" class="tsd-anchor"></a>
 					<h3>receive<wbr>Message</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -341,7 +375,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/2e0bad1/FBService.ts#L153">FBService.ts:153</a></li>
+									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L189">FBService.ts:189</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -379,7 +413,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_service_.service.html">Service</a>.<a href="../interfaces/_service_.service.html#sendmessage">sendMessage</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/2e0bad1/FBService.ts#L144">FBService.ts:144</a></li>
+									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L156">FBService.ts:156</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -410,7 +444,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/2e0bad1/FBService.ts#L129">FBService.ts:129</a></li>
+									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L141">FBService.ts:141</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -443,7 +477,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/2e0bad1/FBService.ts#L106">FBService.ts:106</a></li>
+									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L118">FBService.ts:118</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -463,6 +497,40 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_inputstackentry_.inputstackentry.html" class="tsd-signature-type">InputStackEntry</a></h4>
 							<p>Begin the password retrieval process, null if the login is cancelled, or the result of the login process</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="typingtimedelay" class="tsd-anchor"></a>
+					<h3>typing<wbr>Time<wbr>Delay</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">typing<wbr>Time<wbr>Delay<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Fantasmos/Botob/blob/87804a6/FBService.ts#L170">FBService.ts:170</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Computes a reading time given the string
+										This function has not been combined with &#39;readingTimeDelay&#39; as although
+									the code is identical, they are for different purposes.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>input: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The string to &#39;type&#39;</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<p>The length it would take to type the given input</p>
 						</li>
 					</ul>
 				</section>
@@ -538,13 +606,13 @@
 								<a href="_fbservice_.fbservice.html#fblogin" class="tsd-kind-icon">fb<wbr>Login</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_fbservice_.fbservice.html#loginsession" class="tsd-kind-icon">login<wbr>Session</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_fbservice_.fbservice.html#msgs" class="tsd-kind-icon">msgs</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_fbservice_.fbservice.html#password" class="tsd-kind-icon">password</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_fbservice_.fbservice.html#username" class="tsd-kind-icon">username</a>
+								<a href="_fbservice_.fbservice.html#session" class="tsd-kind-icon">session</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_fbservice_.fbservice.html#asktosavelogin" class="tsd-kind-icon">ask<wbr>ToSave<wbr>Login</a>
@@ -562,6 +630,9 @@
 								<a href="_fbservice_.fbservice.html#loginprocess" class="tsd-kind-icon">login<wbr>Process</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_fbservice_.fbservice.html#readingtimedelay" class="tsd-kind-icon">reading<wbr>Time<wbr>Delay</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_fbservice_.fbservice.html#receivemessage" class="tsd-kind-icon">receive<wbr>Message</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -572,6 +643,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_fbservice_.fbservice.html#setusername" class="tsd-kind-icon">set<wbr>Username</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_fbservice_.fbservice.html#typingtimedelay" class="tsd-kind-icon">typing<wbr>Time<wbr>Delay</a>
 							</li>
 						</ul>
 					</li>
