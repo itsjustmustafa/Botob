@@ -55,9 +55,10 @@ export class FBService implements Service {
         this.session.forceLogin = true;
         if (fs.existsSync(this.sessionFilepath)){
             this.session.appstate = JSON.parse(fs.readFileSync(this.sessionFilepath, 'utf8'));
+            return null;
         }
 
-        if (this.session.email && this.session.password){
+        if ((this.session.email && this.session.password) | this.session.appstate){
             return null;
         }
 
